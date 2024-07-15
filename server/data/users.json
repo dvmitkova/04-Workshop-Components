@@ -15,6 +15,22 @@
     },
     "_id": "96ef3cff-78e1-4ad5-900c-92af573a56e8"
   },
+  "898ecf51-1ccb-405d-b185-358941e90eba": {
+    "firstName": "Didi",
+    "lastName": "Didi",
+    "email": "didi@gmail.com",
+    "phoneNumber": "089912399",
+    "createdAt": "2024-07-15T07:22:00.358Z",
+    "updatedAt": "2024-07-15T07:22:00.358Z",
+    "imageUrl": "https://img.freepik.com/premium-photo/cute-anime-girl-kawaiistyle-cartoon-anime-style-girl-ai-generated_755721-14227.jpg",
+    "address": {
+        "country": "България",
+        "city": "Пловдив",
+        "street": "Победа",
+        "streetNumber": "1"
+    },
+    "_id": "898ecf51-1ccb-405d-b185-358941e90eba"
+},
   "07f260f4-466c-4607-9a33-f7273b24f1b4": {
     "_id": "07f260f4-466c-4607-9a33-f7273b24f1b4",
     "firstName": "Asen",
