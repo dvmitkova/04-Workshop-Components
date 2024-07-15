@@ -1,6 +1,8 @@
-import UesrListItem from "./user-list-item/UserListItem";
+import UserListItem from "./user-list-item/UserListItem";
 
-export default function UserList() {
+export default function UserList({
+  users,
+}) {
   return (
     <div className="table-wrapper">
       {/* <div className="loading-shade">
@@ -105,10 +107,12 @@ export default function UserList() {
           </tr>
         </thead>
         <tbody>
-          <UesrListItem />
-          <UesrListItem />
-          <UesrListItem />
-          <UesrListItem />
+          {users.map(user =>
+            <UserListItem
+              key={user._id}
+              user={user}
+            />
+          )}
         </tbody>
       </table>
     </div>
