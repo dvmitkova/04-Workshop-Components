@@ -1,7 +1,9 @@
 import { formatDate } from "../../../../utils/dateUtils";
 
 export default function UserListItem({
-user
+  user,
+  onUserDetailsClick,
+  onUserDeleteClick,
 }) {
     return (
         <tr>
@@ -36,7 +38,7 @@ user
               ></path>
             </svg>
           </button>
-          <button className="btn delete-btn" title="Delete">
+          <button className="btn delete-btn" title="Delete" onClick={() => onUserDeleteClick(user._id)}>
             <svg
               aria-hidden="true"
               focusable="false"
@@ -53,7 +55,7 @@ user
               ></path>
             </svg>
           </button>
-          <button className="btn info-btn" title="Info">
+          <button className="btn info-btn" title="Info" onClick={() => onUserDetailsClick(user._id)}>
             <svg
               aria-hidden="true"
               focusable="false"
