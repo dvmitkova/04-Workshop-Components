@@ -14,6 +14,7 @@ export default function UserSection() {
   const [showAddUser, setShowAddUser] = useState(false);
   const [showUserDetailsById, setShowUserDetailsById] = useState(null);
   const [showUserDeleteById, setShowUserDeleteById] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async function getUsers() {
@@ -25,6 +26,8 @@ export default function UserSection() {
         setUsers(usersData);
       } catch (error) {
         alert(error.message);
+      } finally {
+        setIsLoading(false);
       }
     })(); //IIFE
   }, []);
@@ -40,6 +43,7 @@ export default function UserSection() {
   const addUserSaveHandler = async (e) => {
     //1. Prevent refresh
     e.preventDefault();
+
 
     //2. Get user data
     const formData = new FormData(e.currentTarget);
@@ -73,21 +77,22 @@ export default function UserSection() {
 
   const userDeleteClickHandler = (userId) => {
     setShowUserDeleteById(userId);
-  }
+  };
 
   const userDeleteHandler = async (userId) => {
-        //1. Send the delete request to the server
+    //1. Send the delete request to the server
     await fetch(`${baseUrl}/users/${userId}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
 
     //2. Delete from local state
-    setUsers(oldUsers => oldUsers.filter(user => user._id !== userId))
+    setUsers((oldUsers) => oldUsers.filter((user) => user._id !== userId));
     //филтрирам всички юзъри, които са с различно id и ги запазвам в новия state без user-а, който сме изтрили
-    
+
     //3. Close modal
     setShowUserDeleteById(null);
-  }
+  };
+
 
   return (
     <section className="card users-container">
@@ -95,6 +100,7 @@ export default function UserSection() {
 
       <UserList
         users={users}
+        isLoading={isLoading}
         onUserDetailsClick={userDetailsClickHandler}
         onUserDeleteClick={userDeleteClickHandler}
       />
@@ -105,7 +111,7 @@ export default function UserSection() {
 
       {showUserDetailsById && (
         <UserDetails
-          user={users.find(user => user._id === showUserDetailsById)}
+          user={users.find((user) => user._id === showUserDetailsById)}
           onClose={() => setShowUserDetailsById(null)}
         />
       )}
